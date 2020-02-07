@@ -10,6 +10,7 @@ const EditableTimer = ({
   elapsed,
   isRunning,
   onFormSubmit,
+  onRemovePress,
 }) => {
   const [editFormOpen, setEditFormOpen] = useState(false)
 
@@ -22,6 +23,10 @@ const EditableTimer = ({
   }
   const handleEditPress = () => {
     openForm()
+  }
+
+  const handleRemovePress = () => {
+    onRemovePress(id)
   }
 
   const handleFormClose = () => {
@@ -52,6 +57,7 @@ const EditableTimer = ({
       isRunning={isRunning}
       editFormOpen={editFormOpen}
       onEditPress={handleEditPress}
+      onRemovePress={handleRemovePress}
     />
   )
 }

@@ -66,6 +66,12 @@ const App = () => {
     })
     setTimers(newTimers)
   }
+
+  const handleRemovePress = attrs => {
+    const newTimers = timers.filter(timer => timer.id !== attrs)
+    setTimers(newTimers)
+  }
+
   return (
     <AppContainer>
       <TitleContainer>
@@ -85,6 +91,7 @@ const App = () => {
             elapsed={elapsed}
             isRunning={isRunning}
             onFormSubmit={handleFormSubmit}
+            onRemovePress={handleRemovePress}
           />
         ))}
       </TimerList>
