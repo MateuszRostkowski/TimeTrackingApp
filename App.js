@@ -1,6 +1,6 @@
-import React from 'react'
-import { SafeAreaView, View, ScrollView, Text } from 'react-native'
+import React, { useState } from 'react'
 import styled from 'styled-components/native'
+import uuidv4 from 'uuid/v4'
 
 import EditableTimer from './components/EditableTimer'
 import ToggleableTimerForm from './components/ToggleableTimerForm'
@@ -26,7 +26,26 @@ const TimerList = styled.ScrollView`
   padding-bottom: 15px;
 `
 
+const initialTimers = [
+  {
+    title: 'Mow the lawn',
+    project: 'House Chores',
+    id: uuidv4(),
+    elapsed: 5456099,
+    isRunning: true,
+  },
+  {
+    title: 'Bake squash',
+    project: 'Kitchen Chores',
+    id: uuidv4(),
+    elapsed: 1227392928,
+    isRunning: false,
+  },
+]
+
 const App = () => {
+  const [timers, setTimers] = useState(initialTimers)
+
   return (
     <AppContainer>
       <TitleContainer>
@@ -34,20 +53,16 @@ const App = () => {
       </TitleContainer>
       <TimerList>
         <ToggleableTimerForm isOpen={false} />
-        <EditableTimer
-          id="1"
-          title="Mow the lawn"
-          project="House Chores"
-          elapsed="8986300"
-          isRunning
-        />
-        <EditableTimer
-          id="2"
-          title="Bake squash"
-          project="Kitchen Chores"
-          elapsed="3890985"
-          editFormOpen
-        />
+        {timers.map(({ title, project, id, elapsed, isRunning }) => (
+          <EditableTimer
+            key={id}
+            id={id}
+            title={title}
+            project={project}
+            elapsed={elapsed}
+            isRunning={isRunning}
+          />
+        ))}
       </TimerList>
     </AppContainer>
   )
