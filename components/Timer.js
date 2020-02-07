@@ -31,8 +31,37 @@ const ButtonGroup = styled.View`
   justify-content: space-between;
 `
 
-const Timer = ({ title, project, elapsed, onEditPress, onRemovePress }) => {
+const Timer = ({
+  id,
+  title,
+  project,
+  elapsed,
+  isRunning,
+  onEditPress,
+  onRemovePress,
+  onStartPress,
+  onStopPress,
+}) => {
   const elapsedString = millisecondsToHuman(elapsed)
+
+  const handleStartPress = () => {
+    onStartPress(id)
+  }
+
+  const handleStopPress = () => {
+    onStopPress(id)
+  }
+
+  const renderActionButton = () => {
+    if (isRunning) {
+      return (
+        <TimerButton color="#21BA45" title="Stop" onPress={handleStopPress} />
+      )
+    }
+    return (
+      <TimerButton color="#21BA45" title="Start" onPress={handleStartPress} />
+    )
+  }
 
   return (
     <TimerContainer>
@@ -48,7 +77,7 @@ const Timer = ({ title, project, elapsed, onEditPress, onRemovePress }) => {
           onPress={onRemovePress}
         />
       </ButtonGroup>
-      <TimerButton color="#21BA45" title="Start" />
+      {renderActionButton()}
     </TimerContainer>
   )
 }

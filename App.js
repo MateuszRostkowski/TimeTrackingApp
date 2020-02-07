@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Text } from 'react-native'
+import { StatusBar } from 'react-native'
 import styled from 'styled-components/native'
 import uuidv4 from 'uuid/v4'
 import { newTimer } from './utils/TimerUtils'
@@ -8,23 +8,23 @@ import EditableTimer from './components/EditableTimer'
 import ToggleableTimerForm from './components/ToggleableTimerForm'
 
 const AppContainer = styled.SafeAreaView`
+  background: #052555;
   flex: 1;
 `
 
 const TitleContainer = styled.View`
-  padding-top: 35px;
-  padding-bottom: 15px;
-  border-bottom-width: 1px;
-  border-bottom-color: #d6d7da;
+  padding: 20px 0;
 `
 
 const Title = styled.Text`
   font-size: 18px;
   font-weight: bold;
   text-align: center;
+  color: white;
 `
 
 const TimerList = styled.ScrollView`
+  background-color: white;
   padding-bottom: 15px;
 `
 
@@ -88,8 +88,24 @@ const App = () => {
     setTimers(newTimers)
   }
 
+  const toggleTimmer = timmerId => {
+    const newTimers = timers.map(timer => {
+      const { id, isRunning } = timer
+
+      if (id === timmerId) {
+        return {
+          ...timer,
+          isRunning: !isRunning,
+        }
+      }
+      return timer
+    })
+    setTimers(newTimers)
+  }
+
   return (
     <AppContainer>
+      <StatusBar barStyle="light-content" />
       <TitleContainer>
         <Title>Timers</Title>
       </TitleContainer>
@@ -108,6 +124,8 @@ const App = () => {
             isRunning={isRunning}
             onFormSubmit={handleFormSubmit}
             onRemovePress={handleRemovePress}
+            onStartPress={toggleTimmer}
+            onStopPress={toggleTimmer}
           />
         ))}
       </TimerList>
