@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -17,13 +17,14 @@ const AttributeContainer = styled.View`
   margin: 0 8px;
 `
 
-const TextInputTitle = styled.Text`
+const TextInputContainer = styled.View`
   border: 1px solid #d6d7da;
   border-radius: 2px;
   margin-bottom: 5px;
+  padding: 5px;
 `
 
-const TextInputContainer = styled.View`
+const TextInputTitle = styled.Text`
   height: 30px;
   padding: 5px;
   font-size: 12px;
@@ -32,7 +33,6 @@ const TextInputContainer = styled.View`
 const TextInput = styled.TextInput`
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 5px;
 `
 
 const ButtonGroup = styled.View`
@@ -41,14 +41,23 @@ const ButtonGroup = styled.View`
 `
 
 const TimerForm = ({ id, title, project }) => {
+  const [projectTitle, setprojectTitle] = useState(id ? title : '')
+  const [projectName, setProjectName] = useState(id ? project : '')
   const submitText = id ? 'Update' : 'Cancel'
+
+  const handleTitleChange = title => setprojectTitle(title)
+  const handleNameChange = name => setProjectName(name)
 
   return (
     <FormContainer>
       <AttributeContainer>
         <TextInputTitle>Title</TextInputTitle>
         <TextInputContainer>
-          <TextInput underlineColorAndroid="transparent" defaultValue={title} />
+          <TextInput
+            underlineColorAndroid="transparent"
+            value={projectTitle}
+            onChangeText={handleTitleChange}
+          />
         </TextInputContainer>
       </AttributeContainer>
       <AttributeContainer>
@@ -56,7 +65,8 @@ const TimerForm = ({ id, title, project }) => {
         <TextInputContainer>
           <TextInput
             underlineColorAndroid="transparent"
-            defaultValue={project}
+            value={projectName}
+            onChangeText={handleNameChange}
           />
         </TextInputContainer>
       </AttributeContainer>
