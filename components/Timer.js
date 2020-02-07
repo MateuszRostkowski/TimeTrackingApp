@@ -43,6 +43,7 @@ const Timer = ({ title, project, elapsed }) => {
         <TimerButton color="blue" small title="Edit" />
         <TimerButton color="blue" small title="Remove" />
       </ButtonGroup>
+      <TimerButton color="#21BA45" title="Start" />
     </TimerContainer>
   )
 }
