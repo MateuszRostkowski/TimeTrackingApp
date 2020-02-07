@@ -2,8 +2,8 @@ import React from 'react'
 import { SafeAreaView, View, ScrollView, Text } from 'react-native'
 import styled from 'styled-components/native'
 
-// import EditableTimer from "./components/EditableTimer"
-// import ToggleableTimerForm from "./components/ToggleableTimerForm"
+import EditableTimer from './components/EditableTimer'
+import ToggleableTimerForm from './components/ToggleableTimerForm'
 
 const AppContainer = styled.SafeAreaView`
   flex: 1;
@@ -33,7 +33,21 @@ const App = () => {
         <Title>Timers</Title>
       </TitleContainer>
       <TimerList>
-        <Text>Here would be list of timmers :D</Text>
+        <ToggleableTimerForm isOpen={false} />
+        <EditableTimer
+          id="1"
+          title="Mow the lawn"
+          project="House Chores"
+          elapsed="8986300"
+          isRunning
+        />
+        <EditableTimer
+          id="2"
+          title="Bake squash"
+          project="Kitchen Chores"
+          elapsed="3890985"
+          editFormOpen
+        />
       </TimerList>
     </AppContainer>
   )
