@@ -48,11 +48,24 @@ const App = () => {
   const [timers, setTimers] = useState(initialTimers)
 
   const handleCreateFormSubmit = timer => {
-    setTimers([newTimer(timer), ...timers])
+    const newTimers = [newTimer(timer), ...timers]
+    setTimers(newTimers)
   }
 
-  const handleFormSubmit = timer => {}
-
+  const handleFormSubmit = attrs => {
+    const newTimers = timers.map(timer => {
+      if (timer.id === attrs.id) {
+        const { projectTitle, projectName } = attrs
+        return {
+          ...timer,
+          title: projectTitle,
+          project: projectName,
+        }
+      }
+      return timer
+    })
+    setTimers(newTimers)
+  }
   return (
     <AppContainer>
       <TitleContainer>
@@ -71,6 +84,7 @@ const App = () => {
             project={project}
             elapsed={elapsed}
             isRunning={isRunning}
+            onFormSubmit={handleFormSubmit}
           />
         ))}
       </TimerList>

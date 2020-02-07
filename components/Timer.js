@@ -31,7 +31,7 @@ const ButtonGroup = styled.View`
   justify-content: space-between;
 `
 
-const Timer = ({ title, project, elapsed }) => {
+const Timer = ({ title, project, elapsed, onEditPress }) => {
   const elapsedString = millisecondsToHuman(elapsed)
 
   return (
@@ -40,7 +40,7 @@ const Timer = ({ title, project, elapsed }) => {
       <Text>{project}</Text>
       <ElapsedTime>{elapsedString}</ElapsedTime>
       <ButtonGroup>
-        <TimerButton color="blue" small title="Edit" />
+        <TimerButton color="blue" small title="Edit" onPress={onEditPress} />
         <TimerButton color="blue" small title="Remove" />
       </ButtonGroup>
       <TimerButton color="#21BA45" title="Start" />
