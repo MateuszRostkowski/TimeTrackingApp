@@ -24,8 +24,8 @@ const pad = (numberString, size) => {
 
 export const newTimer = (attrs = {}) => {
   const timer = {
-    title: attrs.title || 'Timer',
-    project: attrs.project || 'Project',
+    title: attrs.projectTitle || 'Timer',
+    project: attrs.projectName || 'Project',
     id: uuidv4(),
     elapsed: 0,
     isRunning: false,
