@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import TimerButton from './TimerButton'
@@ -40,13 +39,21 @@ const ButtonGroup = styled.View`
   justify-content: space-between;
 `
 
-const TimerForm = ({ id, title, project }) => {
-  const [projectTitle, setprojectTitle] = useState(id ? title : '')
+const TimerForm = ({ id, title, project, onFormClose, onFormSubmit }) => {
+  const [projectTitle, setProjectTitle] = useState(id ? title : '')
   const [projectName, setProjectName] = useState(id ? project : '')
-  const submitText = id ? 'Update' : 'Cancel'
+  const submitText = id ? 'Update' : 'Create'
 
-  const handleTitleChange = title => setprojectTitle(title)
+  const handleTitleChange = title => setProjectTitle(title)
   const handleNameChange = name => setProjectName(name)
+
+  const handleSubmit = () => {
+    onFormSubmit({
+      id,
+      projectTitle,
+      projectName,
+    })
+  }
 
   return (
     <FormContainer>
@@ -71,8 +78,18 @@ const TimerForm = ({ id, title, project }) => {
         </TextInputContainer>
       </AttributeContainer>
       <ButtonGroup>
-        <TimerButton small color="#21BA45" title={submitText} />
-        <TimerButton small color="#DB2828" title="Cancel" />
+        <TimerButton
+          small
+          color="#21BA45"
+          title={submitText}
+          onPress={handleSubmit}
+        />
+        <TimerButton
+          small
+          color="#DB2828"
+          title="Cancel"
+          onPress={onFormClose}
+        />
       </ButtonGroup>
     </FormContainer>
   )
