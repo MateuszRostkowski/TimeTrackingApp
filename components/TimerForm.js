@@ -8,6 +8,7 @@ const FormContainer = styled.View`
   border: 2px solid #d6d7da;
   border-radius: 10px;
   padding: 10px;
+  margin: ${props => (props.margin ? '5px 20px' : '0')};
 `
 
 const AttributeContainer = styled.View``
@@ -52,7 +53,7 @@ const TimerForm = ({ id, title, project, onFormClose, onFormSubmit }) => {
   }
 
   return (
-    <FormContainer>
+    <FormContainer margin={id ? true : false}>
       <AttributeContainer>
         <TextInputTitle>Title</TextInputTitle>
         <TextInputContainer>
