@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 import uuidv4 from 'uuid/v4'
+import { newTimer } from './utils/TimerUtils'
 
 import EditableTimer from './components/EditableTimer'
 import ToggleableTimerForm from './components/ToggleableTimerForm'
@@ -46,13 +47,22 @@ const initialTimers = [
 const App = () => {
   const [timers, setTimers] = useState(initialTimers)
 
+  const handleCreateFormSubmit = timer => {
+    setTimers([newTimer(timer), ...timers])
+  }
+
+  const handleFormSubmit = timer => {}
+
   return (
     <AppContainer>
       <TitleContainer>
         <Title>Timers</Title>
       </TitleContainer>
       <TimerList>
-        <ToggleableTimerForm isOpen={false} />
+        <ToggleableTimerForm
+          isOpen={false}
+          onFormSubmit={handleCreateFormSubmit}
+        />
         {timers.map(({ title, project, id, elapsed, isRunning }) => (
           <EditableTimer
             key={id}
