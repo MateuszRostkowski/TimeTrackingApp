@@ -4,7 +4,7 @@ import TimerForm from './TimerForm'
 import TimerButton from './TimerButton'
 
 const Container = styled.View`
-  padding: 0 10px;
+  margin: 5px 20px;
 `
 
 const ToggleableTimerForm = ({ onFormSubmit }) => {
@@ -25,7 +25,7 @@ const ToggleableTimerForm = ({ onFormSubmit }) => {
           onFormSubmit={handleFormSubmit}
         />
       ) : (
-        <TimerButton title="+" color="#000" onPress={handleFormOpen} />
+        <TimerButton title="+" color="#000" onPress={handleFormOpen} dashed />
       )}
     </Container>
   )

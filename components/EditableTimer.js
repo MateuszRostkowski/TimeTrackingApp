@@ -55,6 +55,7 @@ const EditableTimer = ({
     <Timer
       id={id}
       title={title}
+      project={project}
       elapsed={elapsed}
       isRunning={isRunning}
       editFormOpen={editFormOpen}

@@ -7,33 +7,20 @@ const Button = styled.TouchableOpacity`
   border-radius: 3px;
   border-width: 2px;
   border-color: ${props => props.borderColor};
+  border-style: ${props => (props.dashed ? 'dashed' : 'solid')};
 `
 
 const ButtonText = styled.Text`
   text-align: center;
   font-weight: bold;
-  font-size: ${props => (props.small ? '14px' : '16px')};
-  padding: ${props => (props.small ? '14px' : '16px')};
+  font-size: 16px;
+  padding: 8px 16px;
   color: ${props => props.color};
 `
 
-const Title = styled.Text`
-  font-size: 14px;
-  font-weight: bold;
-`
-
-const ElapsedTime = styled.View`
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  padding: 0 10px;
-`
-
-const TimerButton = ({ color, title, small, onPress }) => (
-  <Button borderColor={color} onPress={onPress}>
-    <ButtonText small={small} color={color}>
-      {title}
-    </ButtonText>
+const TimerButton = ({ color, title, small, onPress, dashed }) => (
+  <Button borderColor={color} onPress={onPress} dashed={dashed}>
+    <ButtonText color={color}>{title}</ButtonText>
   </Button>
 )
 

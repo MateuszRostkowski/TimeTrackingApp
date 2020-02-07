@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import { Text } from 'react-native'
+import { Text, View } from 'react-native'
 
 import TimerButton from './TimerButton'
 import { millisecondsToHuman } from '../utils/TimerUtils'
@@ -10,8 +10,12 @@ const TimerContainer = styled.View`
   border: 2px solid #d6d7da;
   border-radius: 10px;
   padding: 15px;
-  margin: 15px;
-  margin-bottom: 0;
+  margin: 5px 20px;
+`
+
+const DetailsContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `
 
 const Title = styled.Text`
@@ -65,9 +69,13 @@ const Timer = ({
 
   return (
     <TimerContainer>
-      <Title>{title}</Title>
-      <Text>{project}</Text>
-      <ElapsedTime>{elapsedString}</ElapsedTime>
+      <DetailsContainer>
+        <View>
+          <Title>{title}</Title>
+          <Text>{project}</Text>
+        </View>
+        <ElapsedTime>{elapsedString}</ElapsedTime>
+      </DetailsContainer>
       <ButtonGroup>
         <TimerButton color="blue" small title="Edit" onPress={onEditPress} />
         <TimerButton
@@ -76,8 +84,8 @@ const Timer = ({
           title="Remove"
           onPress={onRemovePress}
         />
+        {renderActionButton()}
       </ButtonGroup>
-      {renderActionButton()}
     </TimerContainer>
   )
 }

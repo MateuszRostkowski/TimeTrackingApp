@@ -8,13 +8,9 @@ const FormContainer = styled.View`
   border: 2px solid #d6d7da;
   border-radius: 10px;
   padding: 10px;
-  margin: 15px;
-  margin-bottom: 0;
 `
 
-const AttributeContainer = styled.View`
-  margin: 0 8px;
-`
+const AttributeContainer = styled.View``
 
 const TextInputContainer = styled.View`
   border: 1px solid #d6d7da;
