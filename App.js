@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { Text } from 'react-native'
 import styled from 'styled-components/native'
 import uuidv4 from 'uuid/v4'
 import { newTimer } from './utils/TimerUtils'
@@ -39,13 +40,28 @@ const initialTimers = [
     title: 'Bake squash',
     project: 'Kitchen Chores',
     id: uuidv4(),
-    elapsed: 1227392928,
-    isRunning: false,
+    elapsed: 1227394000,
+    isRunning: true,
   },
 ]
 
 const App = () => {
   const [timers, setTimers] = useState(initialTimers)
+
+  useEffect(() => {
+    const TIME_INTERVAL = 1000
+    const timerId = setInterval(() => {
+      const newTimers = timers.map(timer => {
+        const { elapsed, isRunning } = timer
+        return {
+          ...timer,
+          elapsed: isRunning ? elapsed + TIME_INTERVAL : elapsed,
+        }
+      })
+      setTimers(newTimers)
+    }, TIME_INTERVAL)
+    return () => clearInterval(timerId)
+  }, [timers])
 
   const handleCreateFormSubmit = timer => {
     const newTimers = [newTimer(timer), ...timers]
