@@ -6,6 +6,7 @@ const Button = styled.TouchableOpacity`
   min-width: 100px;
   border-radius: 3px;
   border-width: 2px;
+  background-color: ${props => props.borderColor};
   border-color: ${props => props.borderColor};
   border-style: ${props => (props.dashed ? 'dashed' : 'solid')};
 `
@@ -15,7 +16,7 @@ const ButtonText = styled.Text`
   font-weight: bold;
   font-size: 16px;
   padding: 8px 16px;
-  color: ${props => props.color};
+  color: white;
 `
 
 const TimerButton = ({ color, title, small, onPress, dashed }) => (

@@ -77,13 +77,13 @@ const TimerForm = ({ id, title, project, onFormClose, onFormSubmit }) => {
       <ButtonGroup>
         <TimerButton
           small
-          color="#21BA45"
+          color="#9A4C95"
           title={submitText}
           onPress={handleSubmit}
         />
         <TimerButton
           small
-          color="#DB2828"
+          color="#1D1A31"
           title="Cancel"
           onPress={onFormClose}
         />

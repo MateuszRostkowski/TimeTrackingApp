@@ -59,11 +59,11 @@ const Timer = ({
   const renderActionButton = () => {
     if (isRunning) {
       return (
-        <TimerButton color="#21BA45" title="Stop" onPress={handleStopPress} />
+        <TimerButton color="#9A4C95" title="Stop" onPress={handleStopPress} />
       )
     }
     return (
-      <TimerButton color="#21BA45" title="Start" onPress={handleStartPress} />
+      <TimerButton color="#9A4C95" title="Start" onPress={handleStartPress} />
     )
   }
 
@@ -77,9 +77,9 @@ const Timer = ({
         <ElapsedTime>{elapsedString}</ElapsedTime>
       </DetailsContainer>
       <ButtonGroup>
-        <TimerButton color="blue" small title="Edit" onPress={onEditPress} />
+        <TimerButton color="#F08CAE" small title="Edit" onPress={onEditPress} />
         <TimerButton
-          color="blue"
+          color="#F08CAE"
           small
           title="Remove"
           onPress={onRemovePress}
