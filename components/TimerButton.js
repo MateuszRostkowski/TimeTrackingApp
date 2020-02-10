@@ -34,4 +34,8 @@ TimerButton.PropTypes = {
   dashed: PropTypes.bool,
 }
 
+TimerButton.defaultProps = {
+  small: false,
+}
+
 export default TimerButton

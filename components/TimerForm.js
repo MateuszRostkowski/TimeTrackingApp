@@ -101,4 +101,10 @@ TimerForm.PropTypes = {
   onFormSubmit: PropTypes.func,
 }
 
+TimerForm.defaultProps = {
+  id: null,
+  title: '',
+  project: '',
+}
+
 export default TimerForm
