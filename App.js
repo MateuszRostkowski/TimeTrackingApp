@@ -23,6 +23,10 @@ const Title = styled.Text`
   color: white;
 `
 
+const TimerListContainer = styled.KeyboardAvoidingView`
+  flex: 1;
+`
+
 const TimerList = styled.ScrollView`
   background-color: white;
   padding-bottom: 15px;
@@ -109,26 +113,28 @@ const App = () => {
       <TitleContainer>
         <Title>Timers</Title>
       </TitleContainer>
-      <TimerList>
-        <ToggleableTimerForm
-          isOpen={false}
-          onFormSubmit={handleCreateFormSubmit}
-        />
-        {timers.map(({ title, project, id, elapsed, isRunning }) => (
-          <EditableTimer
-            key={id}
-            id={id}
-            title={title}
-            project={project}
-            elapsed={elapsed}
-            isRunning={isRunning}
-            onFormSubmit={handleFormSubmit}
-            onRemovePress={handleRemovePress}
-            onStartPress={toggleTimmer}
-            onStopPress={toggleTimmer}
+      <TimerListContainer behavior="padding">
+        <TimerList>
+          <ToggleableTimerForm
+            isOpen={false}
+            onFormSubmit={handleCreateFormSubmit}
           />
-        ))}
-      </TimerList>
+          {timers.map(({ title, project, id, elapsed, isRunning }) => (
+            <EditableTimer
+              key={id}
+              id={id}
+              title={title}
+              project={project}
+              elapsed={elapsed}
+              isRunning={isRunning}
+              onFormSubmit={handleFormSubmit}
+              onRemovePress={handleRemovePress}
+              onStartPress={toggleTimmer}
+              onStopPress={toggleTimmer}
+            />
+          ))}
+        </TimerList>
+      </TimerListContainer>
     </AppContainer>
   )
 }
