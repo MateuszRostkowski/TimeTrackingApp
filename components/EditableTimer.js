@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import TimerForm from './TimerForm'
 import Timer from './Timer'
@@ -65,6 +66,18 @@ const EditableTimer = ({
       onStopPress={onStopPress}
     />
   )
+}
+
+EditableTimer.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  project: PropTypes.string,
+  elapsed: PropTypes.number,
+  isRunning: PropTypes.bool,
+  onFormSubmit: PropTypes.func,
+  onRemovePress: PropTypes.func,
+  onStopPress: PropTypes.func,
+  onStartPress: PropTypes.func,
 }
 
 export default EditableTimer

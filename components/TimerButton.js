@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import PropTypes from 'prop-types'
 
 const Button = styled.TouchableOpacity`
   margin-top: 10px;
@@ -24,5 +25,13 @@ const TimerButton = ({ color, title, small, onPress, dashed }) => (
     <ButtonText color={color}>{title}</ButtonText>
   </Button>
 )
+
+TimerButton.PropTypes = {
+  color: PropTypes.string,
+  title: PropTypes.string,
+  small: PropTypes.bool,
+  onPress: PropTypes.func,
+  dashed: PropTypes.bool,
+}
 
 export default TimerButton

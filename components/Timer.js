@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { Text, View } from 'react-native'
+import PropTypes from 'prop-types'
 
 import TimerButton from './TimerButton'
 import { millisecondsToHuman } from '../utils/TimerUtils'
@@ -88,6 +89,18 @@ const Timer = ({
       </ButtonGroup>
     </TimerContainer>
   )
+}
+
+Timer.PropTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  project: PropTypes.string,
+  elapsed: PropTypes.number,
+  isRunning: PropTypes.bool,
+  onEditPress: PropTypes.func,
+  onRemovePress: PropTypes.func,
+  onStartPress: PropTypes.func,
+  onStopPress: PropTypes.func,
 }
 
 export default Timer

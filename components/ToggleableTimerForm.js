@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
+import PropTypes from 'prop-types'
+
 import TimerForm from './TimerForm'
 import TimerButton from './TimerButton'
 
@@ -29,6 +31,10 @@ const ToggleableTimerForm = ({ onFormSubmit }) => {
       )}
     </Container>
   )
+}
+
+ToggleableTimerForm.PropTypes = {
+  onFormSubmit: PropTypes.func,
 }
 
 export default ToggleableTimerForm

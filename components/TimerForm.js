@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
+import PropTypes from 'prop-types'
 
 import TimerButton from './TimerButton'
 
@@ -90,6 +91,14 @@ const TimerForm = ({ id, title, project, onFormClose, onFormSubmit }) => {
       </ButtonGroup>
     </FormContainer>
   )
+}
+
+TimerForm.PropTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  project: PropTypes.string,
+  onFormClose: PropTypes.func,
+  onFormSubmit: PropTypes.func,
 }
 
 export default TimerForm
